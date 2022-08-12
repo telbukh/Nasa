@@ -18,42 +18,44 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        parsingJson()
+        loadData()
     }
-    func parsingJson(){
-        let urlString = "https://api.nasa.gov/planetary/apod?api_key=KLzYVc8lUwApUk965HJEAbcZlcHWoeY8pEYujfEb"
-        let url = URL(string: urlString)
-        guard url != nil else {
+    func loadData(){
+        guard let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=KLzYVc8lUwApUk965HJEAbcZlcHWoeY8pEYujfEb") else {
             print("URL error")
             return
         }
+        
+        let session = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print("------------ Error ------------")
+                return
+            }
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                print("------------ Response error ------------")
+                return
+            }
             
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: url!) { (data, response, error) in
-            if error == nil && data != nil {
+            if let mimeType = httpResponse.mimeType, mimeType == "application/json", let data = data {
                 let decoder = JSONDecoder()
                 do {
-                    let nasa = try decoder.decode(NasaApi.self, from: data!)
-                    let imageURL = URL(string: nasa.url)
+                    let dataForView = try decoder.decode(NasaApi.self, from: data)
+                    let imageURL = URL(string: dataForView.url)
                     if let image = try? Data(contentsOf: imageURL!){
-                    
                         DispatchQueue.main.async {
                             self.imageView.image = UIImage(data: image)
-                            self.titleLable.text = nasa.title
-                            self.dateLable.text = nasa.date
-                            self.explanationLabel.text = nasa.explanation
-                            self.copyrightLabel.text = nasa.copyright
-                            
+                            self.titleLable.text = dataForView.title
+                            self.dateLable.text = dataForView.date
+                            self.explanationLabel.text = dataForView.explanation
+                            self.copyrightLabel.text = dataForView.copyright
                         }
-                    
-                        
                     }
                 } catch {
                     print("Error in JSON parsing")
                 }
             }
         }
-        dataTask.resume()
+        session.resume()
     }
 }
 
