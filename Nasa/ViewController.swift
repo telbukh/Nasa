@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ViewController: UIViewController {
 
 
+    @IBOutlet var contentView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var dateLable: UILabel!
@@ -20,7 +22,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         loadData()
     }
-    func loadData(){
+    private func showLoadingHUD() {
+      let hud = MBProgressHUD.showAdded(to: contentView, animated: true)
+      hud.label.text = "Loading..."
+    }
+    private func hideLoadingHUD() {
+      MBProgressHUD.hide(for: contentView, animated: true)
+    }
+    
+    func loadData() {
+        showLoadingHUD()
         guard let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=KLzYVc8lUwApUk965HJEAbcZlcHWoeY8pEYujfEb") else {
             print("URL error")
             return
@@ -48,6 +59,7 @@ class ViewController: UIViewController {
                             self.dateLable.text = dataForView.date
                             self.explanationLabel.text = dataForView.explanation
                             self.copyrightLabel.text = dataForView.copyright
+                            self.hideLoadingHUD()
                         }
                     }
                 } catch {
@@ -56,6 +68,7 @@ class ViewController: UIViewController {
             }
         }
         session.resume()
+        
     }
 }
 

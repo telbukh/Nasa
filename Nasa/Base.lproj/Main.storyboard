@@ -23,32 +23,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="365" height="365"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="21" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwn-nH-SiK">
-                                        <rect key="frame" x="0.0" y="375" width="365" height="258"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="titlePlaceHolder">
-                                                <attributes>
-                                                    <font key="NSFont" metaFont="system" size="17"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <rect key="frame" x="0.0" y="375" width="365" height="219"/>
+                                        <attributedString key="attributedText"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="datePlaceHolder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJM-ad-nJg">
-                                        <rect key="frame" x="0.0" y="643" width="365" height="20.333333333333371"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJM-ad-nJg">
+                                        <rect key="frame" x="0.0" y="604" width="365" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="explanationPlaceholder" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcU-2P-SQx">
-                                        <rect key="frame" x="0.0" y="673.33333333333337" width="365" height="20.333333333333371"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcU-2P-SQx">
+                                        <rect key="frame" x="0.0" y="664" width="365" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="copyrightLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-QX-k7g">
-                                        <rect key="frame" x="0.0" y="703.66666666666663" width="365" height="20.333333333333371"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-QX-k7g">
+                                        <rect key="frame" x="0.0" y="674" width="365" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -71,6 +64,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentView" destination="8bC-Xf-vdC" id="3hX-yH-p9h"/>
                         <outlet property="copyrightLabel" destination="9xP-QX-k7g" id="dFf-QY-Ety"/>
                         <outlet property="dateLable" destination="MJM-ad-nJg" id="kqP-nY-xHl"/>
                         <outlet property="explanationLabel" destination="xcU-2P-SQx" id="Px6-00-iS2"/>
